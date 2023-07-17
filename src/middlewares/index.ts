@@ -10,13 +10,15 @@ export const isOwner = async (
 ) => {
   try {
     const { id } = req.params;
-    const currentUserId = get(req, "identity._id");
+    var currentUserId = get(req, "identity._id");
 
     if (!currentUserId) {
       return res.sendStatus(403);
     }
 
-    if (currentUserId.toString() !== id) {
+    console.log(typeof currentUserId);
+
+    if (typeof currentUserId === "number" && String(currentUserId) !== id) {
       return res.sendStatus(403);
     }
     next();
