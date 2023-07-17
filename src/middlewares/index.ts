@@ -16,7 +16,7 @@ export const isOwner = async (
       return res.sendStatus(403);
     }
 
-    if (typeof currentUserId === "number" && String(currentUserId) !== id) {
+    if (String(currentUserId) !== id) {
       return res.sendStatus(403);
     }
     next();
